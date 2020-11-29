@@ -140,7 +140,6 @@ def write_footer_file(TEMPLATE_FOOTER_FILE,
                       TEMPLATE_CSS_FILE):
     """
     """
-    print(f"TEMPLATE_CSS_FILE:{TEMPLATE_CSS_FILE}")
     footer_file_string = f"""<!doctype html>
 <html>
 <head>
@@ -158,7 +157,23 @@ def write_footer_file(TEMPLATE_FOOTER_FILE,
     file.close()
     print(f"\t done writing {TEMPLATE_FOOTER_FILE}")
 
+def generate_css_file(TEMPLATE_CSS_FILE,
+                      TEMPLATE_DIRECTORY):
 
+    # COPY claus_template.css
+    src = r"/Users/claushaslauer/Documents/_CodeDev/fun stuff/ia_templates_generator/RESOURCES_ia_cph/claus_template.css"
+    source = pathlib.Path(src)
+    dst = TEMPLATE_DIRECTORY/"Contents"/"Resources"/TEMPLATE_CSS_FILE
+    shutil.copy(source, dst)
+    print(f"\t done writing {TEMPLATE_CSS_FILE}")
+    
+    # COPY claus_template_markdown.css
+    src = r"/Users/claushaslauer/Documents/_CodeDev/fun stuff/ia_templates_generator/RESOURCES_ia_cph/claus_template_markdown.css"
+    source = pathlib.Path(src)
+    dst = TEMPLATE_DIRECTORY/"Contents"/"Resources"/"claus_template_markdown.css"
+    shutil.copy(source, dst)
+    print(f"\t done writing {TEMPLATE_CSS_FILE}")
+    
 
 def main():
     
@@ -191,7 +206,10 @@ def main():
     generate_info_plist(TEMPLATE_NAME[:-11],
                         TEMPLATE_DIRECTORY,
                         TEMPLATE_CSS_FILE)
-    
+
+    ## CREATE TEMPLATE_CSS_FILE
+    generate_css_file(TEMPLATE_CSS_FILE,
+                      TEMPLATE_DIRECTORY)
     print("Done! Yay!")
 
 

@@ -128,3 +128,4 @@ dmypy.json
 # Pyre type checker
 .pyre/
 /ia_cph_template_01.iatemplate
+/RESOURCES_ia_cph
